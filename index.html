@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang='ja'>
+<head>
+  <meta charset='UTF-8'>
+  <meta name='viewport' content='width=device-width, initial-scale=1.0'>
+  <meta http-equiv='X-UA-Compatible' content='ie=edge'>
+  <title>string-counter</title>
+</head>
+<script>
+  window.onload = function() {
+    //改行を数えられるようにする
+    const textArea = document.getElementById('js-text-area');
+    const countDisplay = document.getElementById('count-display');
+    let count = 0;
+    let lines = 0;
+    let text = `<p>入力文字数${count}</p>`;
+    let keyCode = event.keyCode;
+    countDisplay.innerHTML = text;
+
+    function countString() {
+      count = textArea.value.length;
+      text = `<p>入力文字数${count}</p>`
+      countDisplay.innerHTML = text;
+    }
+
+    function countEnter() {
+      if(keyCode === 13) {
+        lines = textArea.value.length;
+      }
+    }
+
+    textArea.addEventListener('keydown', countString);
+    textArea.addEventListener('keydown', countEnter);
+
+  }
+</script>
+<style>
+  .content {
+    width: 50vw;
+    margin: 0 auto;
+  }
+  .text-area {
+    width: 100%;
+    height: 400px;
+  }
+</style>
+<body>
+  <div class='content'>
+    <form class='form'>
+      <textarea id='js-text-area' class='text-area'></textarea>
+    </form>
+    <p id='count-display'></p>
+  </div>
+</body>
+</html>
